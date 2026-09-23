@@ -63,6 +63,9 @@ resource "aws_ecs_service" "front_service" {
   task_definition = aws_ecs_task_definition.front_task.arn
   desired_count   = 1
   launch_type     = "FARGATE"
+  depends_on = [
+    aws_lb_listener.front_listener
+  ]
 
   network_configuration {
     subnets         = [data.aws_subnet.private1.id, data.aws_subnet.private2.id]
