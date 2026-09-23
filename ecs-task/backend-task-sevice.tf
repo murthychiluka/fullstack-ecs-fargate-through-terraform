@@ -13,7 +13,7 @@ resource "aws_lb_target_group" "back-tg" {
   port        = 80
   protocol    = "HTTP"
   vpc_id      = data.aws_vpc.vpc.id
-  target_type = "ip"
+  target_type = "ip"                      # Because Fargate uses ENI/IP networking, we normally use: target_type = "ip"
 }
 
 # Listener for ALB
