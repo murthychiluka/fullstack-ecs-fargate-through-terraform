@@ -30,13 +30,13 @@ data "aws_security_group" "sg" {
 
 resource "aws_db_instance" "rds" {
   allocated_storage      = 20
-  identifier = "book-rds"
+  identifier = "bookrds"
   db_subnet_group_name   = aws_db_subnet_group.sub-grp.id
   engine                 = "mysql"
   engine_version         = "8.4.8"
   instance_class         = "db.t3.micro"
   multi_az               = true
-  db_name                = "books-project"
+  db_name                = "booksproject"
   username               = "admin"
   password               = "Cloud123"
   skip_final_snapshot    = true
@@ -47,7 +47,7 @@ resource "aws_db_instance" "rds" {
 
   
   tags = {
-    DB_identifier = "book-rds"
+    DB_identifier = "bookrds"
   }
 }
 
