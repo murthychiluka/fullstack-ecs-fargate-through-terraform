@@ -75,6 +75,9 @@ resource "aws_ecs_service" "back-ecs_service" {
   task_definition = aws_ecs_task_definition.back-task.arn
   desired_count   = 1
   launch_type     = "FARGATE"
+   depends_on = [
+    aws_lb_listener.back_listener
+  ]
 
   network_configuration {
     subnets         = [data.aws_subnet.private1.id, data.aws_subnet.private2.id]
